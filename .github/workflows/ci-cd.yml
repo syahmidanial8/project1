@@ -3,8 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
-      - SyahmiBranch
+      - main
 
 jobs:
   build:
@@ -14,25 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up PHP
+      - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 7.4
+          php-version: '7.4'  # Adjust version as per your project's requirements
 
       - name: Install dependencies
-        run: composer install
-
-      - name: Run tests
-        run: phpunit
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Deploy to server
         run: |
-          # Commands to deploy your application
-          echo "Deploying to server..."
+          composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit
