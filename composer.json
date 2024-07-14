@@ -1,0 +1,16 @@
+{
+    "name": "syahmidanial8/project1",
+    "description": "project 1 testing",
+    "autoload": {
+        "psr-4": {
+            "Syahmidanial8\\Project1\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Syahmi Danial",
+            "email": "syahmidanial888@gmail.com"
+        }
+    ],
+    "require": {}
+}
